@@ -1,8 +1,8 @@
 version: "3.4"
 services:
   dns:
-    container_name: dns-migration
-    hostname: dns-migration
+    container_name: dns-propagation-checker
+    hostname: dns-propagation-checker
     build:
       dockerfile: Dockerfile
       context: .
