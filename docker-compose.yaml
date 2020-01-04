@@ -1,0 +1,10 @@
+version: "3.4"
+services:
+  dns:
+    container_name: dns-migration
+    hostname: dns-migration
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 3000:3000/tcp

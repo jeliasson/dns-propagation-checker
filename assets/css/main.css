@@ -1,0 +1,50 @@
+html,
+body {
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+table.result {
+    width: 100%;
+}
+
+table.result thead {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+table.result thead > td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+table.result tbody > tr.no-diff > td:not(:first-child) {
+    background-color: #e1ffe1;
+}
+
+table.result tbody > tr.diff > td:not(:first-child) {
+    background-color: #ffeded;
+}
+
+table.result tbody > tr > td {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+table.result tbody > tr > td:first-of-type {
+    font-size: 16px;
+    font-weight: bold;
+}
+table.result tbody > tr > td:not(:first-child) {
+    font-family: 'Courier';
+    font-size: 14px;
+}
+table.result tbody > tr > td > pre {
+    padding-left: 10px;
+}
