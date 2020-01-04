@@ -3,13 +3,17 @@
     "version": "0.0.1",
     "description": "Check propagation of DNS records from one or many Name Servers. Useful for validating a DNS zone during migration.",
     "author": "Johan Eliasson <jeliasson@users.noreply.github.com>",
-    "private": true,
+    "private": false,
+    "license": "MIT",
     "scripts": {
         "dev": "nuxt",
         "build": "nuxt build",
         "start": "nuxt build && nuxt start",
         "precommit": "npm run lint",
-        "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+        "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+        "test": "echo \"No tests defined\" && exit 0",
+        "--DOCKER--": "",
+        "docker:start": "docker build -t dns-propagation-checker . && docker run -it -p 3000:3000 dns-propagation-checker"
     },
     "dependencies": {
         "@nuxtjs/style-resources": "^1.0.0",
