@@ -1,4 +1,4 @@
-FROM node
+FROM node:13
 
 WORKDIR /app
 COPY api api
