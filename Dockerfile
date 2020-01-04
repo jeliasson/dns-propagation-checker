@@ -10,7 +10,7 @@ COPY plugins plugins
 COPY static static
 COPY nuxt.config.js nuxt.config.js
 COPY package.json package.json
-COPY assets assets
+COPY yarn.lock yarn.lock
 
 RUN apt-get update && apt-get -y install dnsutils
 
