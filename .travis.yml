@@ -1,0 +1,4 @@
+language: node
+
+services:
+    - docker
