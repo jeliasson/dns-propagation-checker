@@ -3,7 +3,7 @@
 
 [![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) 
 
-DNS Propagation Checker is a web application that allows you to check multiple DNS records against one or many Name Servers. This is useful before migrating a DNS zone from one hosting to another, by validating that a DNS zone resolves correctly on all resolvers before proceeding. 
+DNS Propagation Checker is a web application that allows you to check multiple DNS records against one or many Name Servers (NS). This can be useful before changing Name Servers for a Internet Domain from one hosting to another, by validating that a DNS zone resolves correctly on all resolvers before proceeding with the migration. 
 
 ## Features
 - Check multiple DNS records against multiple resolvers
@@ -26,14 +26,14 @@ You can run it locally, by using node or Docker, or try out the [online demo](ht
 Get started using either docker, docker-compose or node below.
 
 ### Docker
-Build and run a docker container that listen on `http://localhost:3000`.
+Build and run a docker container that listen on [`http://localhost:3000`](http://localhost:3000).
 ```
 docker built -t dns-propagation-checker .
 docker run -it -p 3000:3000 dns-propagation-checker
 ```
 
 ### Docker Compose
-Build and run a docker container that listen on `http://localhost:3000` using docker-compose.
+Build and run a docker container that listen on [`http://localhost:3000`](http://localhost:3000) using docker-compose.
 ```bash
 docker-compose up   # Listening on localhost:3000
 ```
