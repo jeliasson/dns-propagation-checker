@@ -23,7 +23,7 @@ RUN npx nuxt build
 
 # Addressing permissions issue. It's ugly and insecure, but it works.
 # FATAL  EACCES: permission denied, mkdir '/app/node_modules/.cache'
-RUN chmod -R 777 /app
+#RUN chmod -R 777 /app
 
 EXPOSE 3000
 
