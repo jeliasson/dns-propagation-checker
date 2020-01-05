@@ -64,6 +64,7 @@ Requests to `/api/query` is being rate limited to `10 requests` over `60 seconds
 
 ### Todos
 - Add maximum of servers and records that can be queries on a single run
+- Enable/Disable server and record (server side processing)
 - Prettier interface
 
 ### Get started
