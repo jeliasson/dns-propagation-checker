@@ -16,6 +16,8 @@ RUN apt-get update && apt-get -y install dnsutils
 
 RUN yarn
 
+RUN chmod -R 777 /app/node_modules
+
 EXPOSE 3000
 
 ENTRYPOINT [ "yarn", "start" ]
