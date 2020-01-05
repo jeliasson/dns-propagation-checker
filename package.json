@@ -1,6 +1,6 @@
 {
     "name": "dns-migration",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Check propagation of DNS records from one or many Name Servers. Useful for validating a DNS zone during migration.",
     "author": "Johan Eliasson <jeliasson@users.noreply.github.com>",
     "private": false,
@@ -24,6 +24,7 @@
         "btoa": "^1.2.1",
         "cross-env": "^5.2.0",
         "express": "^4.16.4",
+        "express-rate-limit": "^5.0.0",
         "node-sass": "^4.13.0",
         "normalize.scss": "^0.1.0",
         "nuxt": "latest",

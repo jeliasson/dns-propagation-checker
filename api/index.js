@@ -1,5 +1,7 @@
+// Express
 const express = require('express');
 
+// Parse body requests
 const bodyParser = require('body-parser');
 
 // API routes
