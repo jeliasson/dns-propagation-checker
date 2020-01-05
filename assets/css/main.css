@@ -2,6 +2,10 @@ html,
 body {
 }
 
+div.jumbotron h1 {
+    font-size: 52px;
+}
+
 footer {
     padding: 20px;
     text-align: center;
