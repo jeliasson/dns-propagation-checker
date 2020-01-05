@@ -12,7 +12,7 @@ DNS Propagation Checker is a web application that allows you to check multiple D
 
 You can run it locally using [docker](#Docker), [docker-compose](#Docker-Compose), [node](#Node) or try out the [online demo](https://dns-propagation-checker.eliasson.xyz).
 
-![https://github.com/jeliasson/dns-propagation-checker/blob/dev/assets/img/screenshot.png?raw=true](https://github.com/jeliasson/dns-propagation-checker/blob/dev/assets/img/screenshot.png?raw=true)
+![https://github.com/jeliasson/dns-propagation-checker/blob/dev/src/assets/img/screenshot.png?raw=true](https://github.com/jeliasson/dns-propagation-checker/blob/dev/src/assets/img/screenshot.png?raw=true)
 
 ### Build Status
 
