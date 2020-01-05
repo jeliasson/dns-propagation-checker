@@ -1,6 +1,6 @@
 version: "3.4"
 services:
-  dns:
+  dns-propagation-checker:
     container_name: dns-propagation-checker
     hostname: dns-propagation-checker
     build:

@@ -21,27 +21,32 @@ You can run it locally, by using node or Docker, or try out the [online demo](ht
 |`master`|[![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) |
 | `dev` | [![Build Status on dev](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=dev)](https://travis-ci.com/jeliasson/dns-propagation-checker) |
 
-## Run
+## Start
+First, clone this project and jump into the directory.
+```bash
+git clone https://github.com/jeliasson/dns-propagation-checker.git
+cd dns-propagation-checker
+```
 
-Get started using either docker, docker-compose or node below.
+Now start the application using either docker, docker-compose or node below. Regardless of choice, the application will by default listen on [`http://localhost:3000`](http://localhost:3000).
 
 ### Docker
-Build and run a docker container that listen on [`http://localhost:3000`](http://localhost:3000).
+Build and run a docker container
 ```
 docker built -t dns-propagation-checker .
 docker run -it -p 3000:3000 dns-propagation-checker
 ```
 
 ### Docker Compose
-Build and run a docker container that listen on [`http://localhost:3000`](http://localhost:3000) using docker-compose.
+Build and run a docker container using docker-compose.
 ```bash
-docker-compose up   # Listening on localhost:3000
+docker-compose up
 ```
 
 ### Node
 ```bash
 yarn install
-yarn start          # Listening on localhost:3000
+yarn start
 ```
 
 ## Contribute
@@ -60,7 +65,7 @@ On the server side of things in `/api/routes/query.js`, we take in posted data a
 - Prettier interface
 
 ### Get started
-Enjoy! 
+Fork the project, clone it, and make awesome updates. Send your Pull Request to origin :)
 ```bash
 yarn install
 yarn dev            # Listening on localhost:3000 with hot reload
