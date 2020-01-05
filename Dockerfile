@@ -2,16 +2,16 @@ FROM node:latest
 WORKDIR /app
 
 # Copy file deps
-COPY api api
-COPY assets assets
-COPY components components
-COPY layouts layouts
-COPY pages pages
-COPY plugins plugins
-COPY static static
-COPY nuxt.config.js nuxt.config.js
-COPY package.json package.json
-COPY yarn.lock yarn.lock
+COPY src/api api
+COPY src/assets assets
+COPY src/components components
+COPY src/layouts layouts
+COPY src/pages pages
+COPY src/plugins plugins
+COPY src/static static
+COPY src/nuxt.config.js nuxt.config.js
+COPY src/package.json package.json
+COPY src/yarn.lock yarn.lock
 
 # Install 'dig'
 RUN apt-get update && apt-get -y install dnsutils

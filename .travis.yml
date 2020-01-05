@@ -1,14 +1,14 @@
-language: node_js
-node_js:
-    - 13
+language: generic
 
 services:
-    - docker
+  - docker
 
-install:
-    - docker build -t dns-propagation-checker .
-    #- docker run -it -p 3000:3000 dns-propagation-checker
+deploy:
+  - provider: script
+    script: docker build -t dns-propagation-checker .
+    on:
+      all_branches: true
 
 after_install:
-    - docker rm -f dns-propagation-checker
-    - docker images -q | xargs docker rmi -f
+  - docker rm -f dns-propagation-checker
+  - docker images -q | xargs docker rmi -f
