@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -y install dnsutils
 
 RUN yarn
 
-RUN chmod -R 777 /app/node_modules
+RUN chmod -R 777 /app/node_modules/.cache
 
 EXPOSE 3000
 
