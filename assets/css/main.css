@@ -19,14 +19,18 @@ table.result {
 table.result thead {
     font-size: 16px;
     font-weight: bold;
-    background-color: #252525;
-    color: #f5f5f5;
+    background-color: #e9ecef;
+    color: #1b1b1b;
 }
 
 table.result thead > td {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
+}
+
+table.result thead td:first-of-type {
+    
 }
 
 table.result tbody > tr.no-diff > td:not(:first-child) {
@@ -43,8 +47,12 @@ table.result tbody > tr > td {
     padding-bottom: 10px;
 }
 table.result tbody > tr > td:first-of-type {
+    width: 230px;
     font-size: 16px;
     font-weight: bold;
+    background-color: #e9ecef;
+    color: #1b1b1b;
+    padding-left: 10px;
 }
 table.result tbody > tr > td:not(:first-child) {
     font-family: 'Courier';
@@ -52,6 +60,12 @@ table.result tbody > tr > td:not(:first-child) {
 }
 table.result tbody > tr > td > pre {
     padding-left: 10px;
+}
+
+table.result tbody > tr:hover td:first-of-type {
+    background-color: #1b1b1b !important;
+    color: #e9ecef;
+    cursor: pointer;
 }
 
 div.query {
