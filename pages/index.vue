@@ -2,7 +2,7 @@
     <section>
         <div class="container ct-example-row">
             <div class="row">
-                <div class="col">
+                <div class="col-sm-12 col-md-6">
                     <b-form-group
                         id="tableFieldset-1"
                         label="Servers"
@@ -38,7 +38,7 @@
                         </b-row>
                     </b-form-group>
                 </div>
-                <div class="col">
+                <div class="col-sm-12 col-md-6">
                     <b-form-group
                         id="tableFieldset-1"
                         label="Records"
