@@ -1,6 +1,7 @@
 FROM node:latest
 WORKDIR /app
 
+# Copy file deps
 COPY api api
 COPY assets assets
 COPY components components
@@ -21,10 +22,8 @@ RUN yarn
 # Build Nuxt
 RUN npx nuxt build
 
-# Addressing permissions issue. It's ugly and insecure, but it works.
-# FATAL  EACCES: permission denied, mkdir '/app/node_modules/.cache'
-#RUN chmod -R 777 /app
-
+# Expose on port 3000
 EXPOSE 3000
 
+# Start nuxt
 ENTRYPOINT [ "npx", "nuxt", "start" ]
