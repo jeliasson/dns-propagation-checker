@@ -1,7 +1,7 @@
 
 # DNS Propagation Checker
 
-[![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) 
+[![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) [![Version](https://img.shields.io/github/package-json/v/jeliasson/dns-propagation-checker?label=version@master)](https://github.com/jeliasson/dns-propagation-checker) [![Issues](https://img.shields.io/github/issues-raw/jeliasson/dns-propagation-checker)](https://github.com/jeliasson/dns-propagation-checker) 
 
 DNS Propagation Checker is a web application that allows you to check multiple DNS records against one or many Name Servers (NS). This can be useful before changing Name Servers for a Internet Domain from one hosting to another, by validating that a DNS zone resolves correctly on all resolvers before proceeding with the migration. 
 
@@ -10,43 +10,63 @@ DNS Propagation Checker is a web application that allows you to check multiple D
 - Persistant configuration of records, servers and settings based of url
 - Color indication of matching DNS records, even if they come back in different order.
 
-You can run it locally, by using node or Docker, or try out the [online demo](https://dns-propagation-checker.eliasson.xyz) if it's functioning. 
+You can run it locally using [docker](#Docker), [docker-compose](#Docker-Compose), [node](#Node) or try out the [online demo](https://dns-propagation-checker.eliasson.xyz).
 
 
 ![https://github.com/jeliasson/dns-propagation-checker/blob/dev/assets/img/screenshot.png?raw=true](https://github.com/jeliasson/dns-propagation-checker/blob/dev/assets/img/screenshot.png?raw=true)
 
 ### Build Status
-|Branch|Status|
-|--------|-------|
-|`master`|[![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) |
-| `dev` | [![Build Status on dev](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=dev)](https://travis-ci.com/jeliasson/dns-propagation-checker) |
+|Branch|Status|Version|
+|--------|-------|------|
+|`master`|[![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) | [![Version](https://img.shields.io/github/package-json/v/jeliasson/dns-propagation-checker?label=version)](https://github.com/jeliasson/dns-propagation-checker) |
+| `dev` | [![Build Status on dev](https://travis-ci.com/jeliasson/dns-propagation-checker.svg)](https://travis-ci.com/jeliasson/dns-propagation-checker) | [![Version](https://img.shields.io/github/package-json/v/jeliasson/dns-propagation-checker/dev?label=version)](https://github.com/jeliasson/dns-propagation-checker) |
 
 ## Start
-First, clone this project and jump into the directory.
-```bash
-git clone https://github.com/jeliasson/dns-propagation-checker.git
-cd dns-propagation-checker
-```
-
-Now start the application using either docker, docker-compose or node below. Regardless of choice, the application will by default listen on [`http://localhost:3000`](http://localhost:3000).
+Start the application using either [docker](#Docker), [docker-compose](#Docker-Compose) or [node](#Node) below. Regardless of choice, the application will by default listen on [`http://localhost:3000`](http://localhost:3000).
 
 ### Docker
-Build and run a docker container
+Run `jeliasson/dns-propagation-checker` which is build on [Docker Hub](https://hub.docker.com/r/jeliasson/dns-propagation-checker).
+
+```docker
+docker run -it -p 3000:3000 jeliasson/dns-propagation-checker
 ```
+
+### Docker - Build & Run
+Build and run a docker container
+```bash
+# Clone repo
+git clone https://github.com/jeliasson/dns-propagation-checker.git
+cd dns-propagation-checker
+
+# Build
 docker built -t dns-propagation-checker .
+
+# Start
 docker run -it -p 3000:3000 dns-propagation-checker
 ```
 
 ### Docker Compose
 Build and run a docker container using docker-compose.
 ```bash
+# Clone repo
+git clone https://github.com/jeliasson/dns-propagation-checker.git
+cd dns-propagation-checker
+
+# Start
 docker-compose up
 ```
 
 ### Node
 Make sure that you have the Linux utility `dig` installed. See [Under the hood](#Under-the-hood) for more details.
 ```bash
+# Clone repo
+git clone https://github.com/jeliasson/dns-propagation-checker.git
+cd dns-propagation-checker
+
+# Install yarn deps
 yarn install
+
+# Start
 yarn start
 ```
 
@@ -70,7 +90,14 @@ Requests to `/api/query` is being rate limited to `10 requests` over `60 seconds
 ### Get started
 Fork the project, clone it, and make awesome updates. Send your Pull Request to origin :)
 ```bash
+# Clone repo
+git clone https://github.com/jeliasson/dns-propagation-checker.git
+cd dns-propagation-checker
+
+# Install yarn deps
 yarn install
+
+# Start
 yarn dev            # Listening on localhost:3000 with hot reload
 ```
 
