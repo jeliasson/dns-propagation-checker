@@ -8,6 +8,8 @@ services:
 deploy:
   - provider: script
     script: docker build -t dns-propagation-checker .
+    on:
+      all_branches: true
 
 after_install:
   - docker rm -f dns-propagation-checker
