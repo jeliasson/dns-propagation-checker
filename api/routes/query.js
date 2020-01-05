@@ -1,18 +1,10 @@
 import { decode } from '../../plugins/transport.js';
+import { order } from '../../plugins/array.js';
 
 const { Router } = require('express');
 const rateLimit = require("express-rate-limit");
 const shelljs = require('shelljs');
 const router = Router();
-
-function array_order(x, y) {
-    var pre = ['string', 'number', 'bool'];
-    if (typeof x !== typeof y)
-        return pre.indexOf(typeof y) - pre.indexOf(typeof x);
-
-    if (x === y) return 0;
-    else return x > y ? 1 : -1;
-}
 
 /* GET users listing. */
 router.post('/query', rateLimit({
@@ -117,12 +109,12 @@ router.post('/query', rateLimit({
                 rs.results.forEach(function (previous) {
                     // Compare previous value
                     let compare1 = JSON.stringify(
-                        previous.result.values.sort(array_order)
+                        previous.result.values.sort(order)
                     );
 
                     // Compare resolver value
                     let compare2 = JSON.stringify(
-                        query.stdout.split('\n').sort(array_order)
+                        query.stdout.split('\n').sort(order)
                     );
 
                     // Compare and set diff
