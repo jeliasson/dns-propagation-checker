@@ -19,7 +19,8 @@ table.result {
 table.result thead {
     font-size: 16px;
     font-weight: bold;
-    background-color: #f1f1f1;
+    background-color: #252525;
+    color: #f5f5f5;
 }
 
 table.result thead > td {
@@ -29,11 +30,11 @@ table.result thead > td {
 }
 
 table.result tbody > tr.no-diff > td:not(:first-child) {
-    background-color: #e1ffe1;
+    background-color: #d1ffd1;
 }
 
 table.result tbody > tr.diff > td:not(:first-child) {
-    background-color: #ffeded;
+    background-color: #f7dede;
 }
 
 table.result tbody > tr > td {
