@@ -1,6 +1,6 @@
 FROM node:latest
-
 WORKDIR /app
+
 COPY api api
 COPY assets assets
 COPY components components
@@ -12,18 +12,19 @@ COPY nuxt.config.js nuxt.config.js
 COPY package.json package.json
 COPY yarn.lock yarn.lock
 
+# Install 'dig'
 RUN apt-get update && apt-get -y install dnsutils
 
+# Install yarn deps
 RUN yarn
 
-RUN ls -lA /app
+# Build Nuxt
+RUN npx nuxt build
 
-# Addressing issue with
+# Addressing permissions issue. It's ugly and insecure, but it works.
 # FATAL  EACCES: permission denied, mkdir '/app/node_modules/.cache'
 RUN chmod -R 777 /app
 
-RUN ls -lA /app
-
 EXPOSE 3000
 
-ENTRYPOINT [ "yarn", "start" ]
+ENTRYPOINT [ "npx", "nuxt", "start" ]
