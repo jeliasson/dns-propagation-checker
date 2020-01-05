@@ -44,6 +44,7 @@ docker-compose up
 ```
 
 ### Node
+Make sure that you have the Linux utility `dig` installed. See [Under the hood](#Under-the-hood) for more details.
 ```bash
 yarn install
 yarn start
@@ -53,7 +54,7 @@ yarn start
 Feel free to send your improvements by PR! ❤️
 
 ### Under the hood
-First off, it's not pretty and was done in a hurry. It's using the linux utitlity [`dig`](https://en.wikipedia.org/wiki/Dig_(command)) for querying DNS servers, and using [Vue](https://www.vuejs.org) and [Nuxt](https://www.nuxtjs.com) to serve the front- and backend requests and [`shelljs`](https://github.com/shelljs/shelljs) to interact with dig. 
+First off, it's not pretty and was done in a hurry. It's using the Linux utitlity [`dig`](https://en.wikipedia.org/wiki/Dig_(command)) for querying DNS servers, and using [Vue](https://www.vuejs.org) and [Nuxt](https://www.nuxtjs.com) to serve the front- and backend requests and [`shelljs`](https://github.com/shelljs/shelljs) to interact with dig. 
 
 The client side application can be found in `/pages/index.vue`. It's saving the state/settings on client side by changing the url, containing the url parameter `settings` - which is essentially a base64 encoded object holding records and servers. For now, and just because we can, it's using this base64 object when querying the `/api/query` endpoint. 
 
