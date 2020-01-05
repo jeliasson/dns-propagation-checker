@@ -59,9 +59,10 @@ The client side application can be found in `/pages/index.vue`. It's saving the 
 
 On the server side of things in `/api/routes/query.js`, we take in posted data and making sure it's not containing any nasty user input. We construct a `dig` command, run it, check if there any difference between earlier resolves on that record, and finally respond with a JSON object.
 
+Requests to `/api/query` is being rate limited to `10 requests` over `60 seconds`.
+
 ### Todos
 - Add maximum of servers and records that can be queries on a single run
-- Soft firewall for Max Reqests
 - Prettier interface
 
 ### Get started
