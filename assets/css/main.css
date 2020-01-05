@@ -48,3 +48,12 @@ table.result tbody > tr > td:not(:first-child) {
 table.result tbody > tr > td > pre {
     padding-left: 10px;
 }
+
+div.query {
+    padding: 10px 0 30px 0;
+}
+
+button.query {
+    height: 60px;
+    width: 130px;
+}

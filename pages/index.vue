@@ -78,16 +78,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col text-center">
-                    <b-button variant="success" size="lg" @click="submitQuery"
-                        >Query</b-button
+                <div class="col text-center query">
+                    <b-button class="query" variant="success" size="lg" @click="submitQuery"
+                        ><template v-if="!isLoading">Query</template>
+                        
+                        <b-spinner variant="light" label="Loading result..." v-if="isLoading"></b-spinner>
+                        </b-button
                     >
                 </div>
             </div>
 
             <b-row>
                 <b-col>
-                    <table class="result">
+                    <!--
+                    <div class="text-center" v-if="isLoading">
+                        <b-spinner variant="primary" label="Loading result..."></b-spinner>
+                    </div>
+                    -->
+                    <table class="result" v-if="showResult">
                         <thead v-if="response[0]">
                             <td></td>
                             <td
@@ -144,6 +152,10 @@ export default {
     },
     data() {
         return {
+            
+            isLoading: false,
+            showResult: false,
+
             response: [],
             servers: [
                 {
@@ -251,6 +263,9 @@ export default {
         submitQuery() {
             const self = this;
 
+            self.showResult = false;
+            self.isLoading = true;
+
             const payload = {
                 data: encode({
                     servers: this.servers,
@@ -299,6 +314,10 @@ export default {
                 })
                 .catch(function(error) {
                     console.log(error);
+                })
+                .finally(function() {
+                    self.showResult = true;
+                    self.isLoading = false;
                 });
         },
         settingsChanged() {
