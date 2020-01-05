@@ -1,0 +1,10 @@
+version: "3.4"
+services:
+  dns-propagation-checker:
+    container_name: dns-propagation-checker
+    hostname: dns-propagation-checker
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 3000:3000/tcp

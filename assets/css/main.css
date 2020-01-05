@@ -1,0 +1,78 @@
+html,
+body {
+}
+
+div.jumbotron h1 {
+    font-size: 52px;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+table.result {
+    width: 100%;
+}
+
+table.result thead {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #e9ecef;
+    color: #1b1b1b;
+}
+
+table.result thead > td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+table.result thead td:first-of-type {
+
+}
+
+table.result tbody > tr.no-diff > td:not(:first-child) {
+    background-color: #d1ffd1;
+}
+
+table.result tbody > tr.diff > td:not(:first-child) {
+    background-color: #f7dede;
+}
+
+table.result tbody > tr > td {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+table.result tbody > tr > td:first-of-type {
+    width: 230px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #e9ecef;
+    color: #1b1b1b;
+    padding-left: 10px;
+}
+table.result tbody > tr > td:not(:first-child) {
+    font-family: 'Courier';
+    font-size: 14px;
+}
+table.result tbody > tr > td > pre {
+    padding-left: 10px;
+}
+
+table.result tbody > tr:hover td:first-of-type {
+    background-color: #1b1b1b !important;
+    color: #e9ecef;
+    cursor: pointer;
+}
+
+div.query {
+    padding: 10px 0 30px 0;
+}
+
+button.query {
+    height: 60px;
+    width: 130px;
+}
