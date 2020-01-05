@@ -1,8 +1,8 @@
 import { decode } from '../../plugins/transport.js';
 
 const { Router } = require('express');
+const rateLimit = require("express-rate-limit");
 const shelljs = require('shelljs');
-
 const router = Router();
 
 function array_order(x, y) {
@@ -15,7 +15,10 @@ function array_order(x, y) {
 }
 
 /* GET users listing. */
-router.post('/query', function(req, res, next) {
+router.post('/query', rateLimit({
+    windowMs: 60 * 1000,
+    max: 10
+}), function (req, res, next) {
     console.log('Incoming DNS query');
     if (req && req.body) {
         // Define variables
@@ -32,7 +35,7 @@ router.post('/query', function(req, res, next) {
         const servers = decoded.servers;
         const records = decoded.records;
 
-        records.forEach(function(record) {
+        records.forEach(function (record) {
             // Create record set
             let rs = {
                 record: {
@@ -44,7 +47,7 @@ router.post('/query', function(req, res, next) {
             };
 
             // Loop thru all servers to be resolved with
-            servers.forEach(function(server) {
+            servers.forEach(function (server) {
                 // Use dig for DNS queries
                 let query;
                 const command = `dig ${record.fqdn} ${record.type} @${server.address} +short`;
@@ -88,13 +91,13 @@ router.post('/query', function(req, res, next) {
 
                 query = validation.status
                     ? shelljs.exec(command, {
-                          silent: true,
-                      })
+                        silent: true,
+                    })
                     : {
-                          stdout: `Input validation failed\n${validation.error}\n`,
-                          stderr: '',
-                          code: 999,
-                      };
+                        stdout: `Input validation failed\n${validation.error}\n`,
+                        stderr: '',
+                        code: 999,
+                    };
 
                 // Query result
                 const result = {
@@ -111,7 +114,7 @@ router.post('/query', function(req, res, next) {
                 };
 
                 // Check if this is different from other resolves (row level)
-                rs.results.forEach(function(previous) {
+                rs.results.forEach(function (previous) {
                     // Compare previous value
                     let compare1 = JSON.stringify(
                         previous.result.values.sort(array_order)
