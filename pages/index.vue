@@ -182,8 +182,8 @@ export default {
                 },
                 {
                     enabled: true,
-                    fqdn: 'example.org',
-                    type: 'NS',
+                    fqdn: 'google.com',
+                    type: 'A',
                 },
             ],
             recordTypes: [
