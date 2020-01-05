@@ -16,10 +16,14 @@ RUN apt-get update && apt-get -y install dnsutils
 
 RUN yarn
 
-EXPOSE 3000
+RUN ls -lA /app
 
 # Addressing issue with
 # FATAL  EACCES: permission denied, mkdir '/app/node_modules/.cache'
-USER root
+RUN chmod -R 777 /app
+
+RUN ls -lA /app
+
+EXPOSE 3000
 
 ENTRYPOINT [ "yarn", "start" ]
