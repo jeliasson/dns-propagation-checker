@@ -1,0 +1,48 @@
+{
+	"name": "dns-migration",
+	"version": "0.0.6",
+	"description": "Check propagation of DNS records from one or many Name Servers. Useful for validating a DNS zone during migration.",
+	"author": "Johan Eliasson <jeliasson@users.noreply.github.com>",
+	"private": false,
+	"license": "MIT",
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+		"start": "nuxt build && nuxt start",
+		"precommit": "npm run lint",
+		"lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+		"test": "echo \"No tests defined\" && exit 0",
+		"--DOCKER--": "",
+		"docker:start": "docker build -t dns-propagation-checker . && docker run -it -p 3000:3000 dns-propagation-checker"
+	},
+	"dependencies": {
+		"@nuxtjs/style-resources": "^1.0.0",
+		"atob": "^2.1.2",
+		"axios": "^0.18.0",
+		"body-parser": "^1.19.0",
+		"bootstrap-vue": "^2.1.0",
+		"btoa": "^1.2.1",
+		"cross-env": "^5.2.0",
+		"express": "^4.16.4",
+		"express-rate-limit": "^5.0.0",
+		"node-sass": "^4.13.0",
+		"normalize.scss": "^0.1.0",
+		"nuxt": "latest",
+		"sass-loader": "^8.0.0",
+		"shelljs": "^0.8.3",
+		"source-map-support": "^0.4.18",
+		"vue": "^2.6.11"
+	},
+	"devDependencies": {
+		"babel-eslint": "^7.2.3",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.7.0",
+		"eslint-loader": "^1.9.0",
+		"eslint-plugin-html": "^3.2.2",
+		"eslint-plugin-import": "^2.16.0",
+		"eslint-plugin-node": "^5.2.1",
+		"eslint-plugin-promise": "^3.8.0",
+		"eslint-plugin-standard": "^3.1.0",
+		"eslint-plugin-vue": "^6.0.1"
+	}
+}
