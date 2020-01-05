@@ -5,8 +5,9 @@ node_js:
 services:
   - docker
 
-install:
-  - docker build -t dns-propagation-checker .
+deploy:
+  - provider: script
+    script: docker build -t dns-propagation-checker .
 
 after_install:
   - docker rm -f dns-propagation-checker
