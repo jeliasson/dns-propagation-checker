@@ -16,8 +16,10 @@ RUN apt-get update && apt-get -y install dnsutils
 
 RUN yarn
 
-RUN chmod -R 777 /app/node_modules/.cache
-
 EXPOSE 3000
+
+# Addressing issue with
+# FATAL  EACCES: permission denied, mkdir '/app/node_modules/.cache'
+USER root
 
 ENTRYPOINT [ "yarn", "start" ]
