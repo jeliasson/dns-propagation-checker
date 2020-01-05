@@ -1,6 +1,6 @@
 {
     "name": "dns-migration",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Check propagation of DNS records from one or many Name Servers. Useful for validating a DNS zone during migration.",
     "author": "Johan Eliasson <jeliasson@users.noreply.github.com>",
     "private": false,
