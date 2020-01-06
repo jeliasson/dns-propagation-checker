@@ -9,7 +9,7 @@
                 <div class="row">
                     <b-col sm="12" md="5">
                         <b-form-group
-                            id="tableFieldset-1"
+                            id="form_group_servers"
                             label="Servers"
                             label-size="lg"
                             label-class="font-weight-bold pt-0"
@@ -49,7 +49,7 @@
                     </b-col>
                     <b-col sm="12" md="6" offset-md="1">
                         <b-form-group
-                            id="tableFieldset-1"
+                            id="form_group_records"
                             label="Records"
                             label-size="lg"
                             label-class="font-weight-bold pt-0"
@@ -124,6 +124,36 @@
                                     <td>{{ rs.record.fqdn }} ({{ rs.record.type }})</td>
                                     <td v-for="(result, index) in rs.results" v-bind:key="index">
                                         <pre><template v-for="value in result.result.values"><template v-if="value">{{ value }}
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
 </template></template></pre>
                                     </td>
                                 </tr>
