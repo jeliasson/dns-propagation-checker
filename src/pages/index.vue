@@ -14,7 +14,7 @@
                             label-size="lg"
                             label-class="font-weight-bold pt-0"
                         >
-                            <b-form inline v-on:submit.prevent @change="settingsChanged()">
+                            <b-form v-on:submit.prevent @change="settingsChanged()">
                                 <b-row v-for="(server, index) in servers" :key="server">
                                     <b-input-group size="lg">
                                         <b-input-group-prepend is-text>
@@ -33,14 +33,14 @@
                                             <b-button
                                                 variant="outline-danger"
                                                 @click="removeServer(index)"
-                                            >Remove</b-button>
+                                            >X</b-button>
                                         </b-input-group-append>
                                     </b-input-group>
                                 </b-row>
                                 <b-row align-h="end">
                                     <b-button
                                         size="lg"
-                                        variant="primary"
+                                        variant="outline-primary"
                                         @click="addServer"
                                     >Add server</b-button>
                                 </b-row>
@@ -55,7 +55,7 @@
                                 label-size="lg"
                                 label-class="font-weight-bold pt-0"
                             >
-                                <b-form inline v-on:submit.prevent @change="settingsChanged()">
+                                <b-form v-on:submit.prevent @change="settingsChanged()">
                                     <b-row v-for="(record, index) in records" :key="record">
                                         <b-input-group size="lg">
                                             <b-input-group-prepend is-text>
@@ -76,14 +76,14 @@
                                                 <b-button
                                                     variant="outline-danger"
                                                     @click="removeRecord(index)"
-                                                >Remove</b-button>
+                                                >X</b-button>
                                             </b-input-group-append>
                                         </b-input-group>
                                     </b-row>
                                     <b-row align-h="end">
                                         <b-button
                                             size="lg"
-                                            variant="primary"
+                                            variant="outline-primary"
                                             @click="addRecord"
                                         >Add record</b-button>
                                     </b-row>
@@ -126,6 +126,116 @@
                                     <td>{{ rs.record.fqdn }} ({{ rs.record.type }})</td>
                                     <td v-for="(result, index) in rs.results" v-bind:key="index">
                                         <pre><template v-for="value in result.result.values"><template v-if="value">{{ value }}
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
 </template></template></pre>
                                     </td>
                                 </tr>
