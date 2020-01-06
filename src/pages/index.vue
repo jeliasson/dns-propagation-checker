@@ -7,7 +7,7 @@
         <section>
             <div class="container ct-example-row">
                 <div class="row">
-                    <div class="col-sm-12 col-md-6">
+                    <b-col sm="12" md="5">
                         <b-form-group
                             id="tableFieldset-1"
                             label="Servers"
@@ -15,53 +15,82 @@
                             label-class="font-weight-bold pt-0"
                         >
                             <b-form inline v-on:submit.prevent @change="settingsChanged()">
-                                <div inline v-for="(server, index) in servers" class="row">
-                                    <b-form-checkbox v-model="server.enabled" />
-                                    <b-form-input v-model="server.name" />
-                                    <b-form-input v-model="server.address" />
+                                <b-row v-for="(server, index) in servers" :key="server">
+                                    <b-input-group size="lg">
+                                        <b-input-group-prepend is-text>
+                                            <input
+                                                v-model="server.enabled"
+                                                type="checkbox"
+                                                aria-label="Checkbox for following text input"
+                                            />
+                                        </b-input-group-prepend>
+                                        <b-form-input v-model="server.name" placeholder="Name"></b-form-input>
+                                        <b-form-input
+                                            v-model="server.address"
+                                            placeholder="Address"
+                                        ></b-form-input>
+                                        <b-input-group-append>
+                                            <b-button
+                                                variant="outline-danger"
+                                                @click="removeServer(index)"
+                                            >Remove</b-button>
+                                        </b-input-group-append>
+                                    </b-input-group>
+                                </b-row>
+                                <b-row align-h="end">
                                     <b-button
-                                        variant="outline-danger"
-                                        @click="removeServer(index)"
-                                    >Remove</b-button>
-                                </div>
+                                        size="lg"
+                                        variant="primary"
+                                        @click="addServer"
+                                    >Add server</b-button>
+                                </b-row>
                             </b-form>
-                            <b-row>
-                                <b-col>
-                                    <b-button variant="primary" @click="addServer">Add server</b-button>
-                                </b-col>
-                            </b-row>
                         </b-form-group>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <b-form-group
-                            id="tableFieldset-1"
-                            label="Records"
-                            label-size="lg"
-                            label-class="font-weight-bold pt-0"
-                        >
-                            <b-form inline v-on:submit.prevent @change="settingsChanged()">
-                                <div v-for="(record, index) in records" class="row">
-                                    <b-form-checkbox v-model="record.enabled" />
-                                    <b-form-input v-model="record.fqdn" />
-                                    <b-form-select v-model="record.type">
-                                        <option
-                                            v-for="record in recordTypes"
-                                            :value="record.type"
-                                        >{{ record.type }}</option>
-                                    </b-form-select>
-                                    <b-button
-                                        variant="outline-danger"
-                                        @click="removeRecord(index)"
-                                    >Remove</b-button>
-                                </div>
-                            </b-form>
-                            <b-row>
-                                <b-col>
-                                    <b-button variant="primary" @click="addRecord">Add record</b-button>
-                                </b-col>
-                            </b-row>
-                        </b-form-group>
-                    </div>
+                    </b-col>
+                    <b-col sm="12" md="6" offset-md="1">
+                        <b-row>
+                            <b-form-group
+                                id="tableFieldset-1"
+                                label="Records"
+                                label-size="lg"
+                                label-class="font-weight-bold pt-0"
+                            >
+                                <b-form inline v-on:submit.prevent @change="settingsChanged()">
+                                    <b-row v-for="(record, index) in records" :key="record">
+                                        <b-input-group size="lg">
+                                            <b-input-group-prepend is-text>
+                                                <input
+                                                    v-model="record.enabled"
+                                                    type="checkbox"
+                                                    aria-label="Checkbox for following text input"
+                                                />
+                                            </b-input-group-prepend>
+                                            <b-form-input v-model="record.fqdn" placeholder="FQDN"></b-form-input>
+                                            <b-form-select v-model="record.type">
+                                                <option
+                                                    v-for="record in recordTypes"
+                                                    :value="record.type"
+                                                >{{ record.type }}</option>
+                                            </b-form-select>
+                                            <b-input-group-append>
+                                                <b-button
+                                                    variant="outline-danger"
+                                                    @click="removeRecord(index)"
+                                                >Remove</b-button>
+                                            </b-input-group-append>
+                                        </b-input-group>
+                                    </b-row>
+                                    <b-row align-h="end">
+                                        <b-button
+                                            size="lg"
+                                            variant="primary"
+                                            @click="addRecord"
+                                        >Add record</b-button>
+                                    </b-row>
+                                </b-form>
+                            </b-form-group>
+                        </b-row>
+                    </b-col>
                 </div>
                 <div class="row">
                     <div class="col text-center query">
@@ -97,6 +126,376 @@
                                     <td>{{ rs.record.fqdn }} ({{ rs.record.type }})</td>
                                     <td v-for="(result, index) in rs.results" v-bind:key="index">
                                         <pre><template v-for="value in result.result.values"><template v-if="value">{{ value }}
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
+</template></template></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </b-col>
+                </b-row>
+            </div>
+        </section>
+    </b-container>
 </template></template></pre>
                                     </td>
                                 </tr>
