@@ -25,7 +25,7 @@
 		"cross-env": "^5.2.0",
 		"express": "^4.16.4",
 		"express-rate-limit": "^5.0.0",
-		"node-sass": "^4.13.0",
+		"node-sass": "^4.13.1",
 		"normalize.scss": "^0.1.0",
 		"nuxt": "latest",
 		"sass-loader": "^8.0.0",
