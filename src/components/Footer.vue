@@ -1,5 +1,5 @@
 <template>
-  <footer>
-    © Copyright Sydnod Ltd
-  </footer>
+	<footer>
+		© Copyright Sydnod Ltd
+	</footer>
 </template>

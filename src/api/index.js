@@ -21,6 +21,18 @@ app.use(query);
 
 // Export the server middleware
 module.exports = {
-  path: '/api',
-  handler: app,
+	path: '/api',
+	handler: app,
 };
+
+const find = db.users.findMany({
+	include: {
+		id: true,
+		Item: {
+			createdAt: true,
+			ItemOnUser: {
+				picked: true,
+			},
+		},
+	},
+});
