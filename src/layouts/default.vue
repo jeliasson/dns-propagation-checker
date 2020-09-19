@@ -32,13 +32,13 @@ export default {
 
 <style>
 .logo {
-	margin: 0;
-	padding: 24px;
-	width: 250px;
-	min-height: 20px;
+    margin: 0;
+    padding: 24px;
+    width: 250px;
+    min-height: 20px;
 }
 
 .logo img {
-	height: 30px;
+    height: 30px;
 }
 </style>
