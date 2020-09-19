@@ -1,13 +1,13 @@
-const btoa = require("btoa");
-const atob = require("atob");
+const btoa = require('btoa');
+const atob = require('atob');
 
 const encode = function(object) {
 	// JSON stringify, reverse, base64
 	const encoded = btoa(
 		JSON.stringify(object)
-			.split("")
+			.split('')
 			.reverse()
-			.join("")
+			.join('')
 	);
 
 	return encoded;
@@ -17,9 +17,9 @@ const decode = function(string) {
 	// base64, reverse, JSON parse
 	const decoded = JSON.parse(
 		atob(string)
-			.split("")
+			.split('')
 			.reverse()
-			.join("")
+			.join('')
 	);
 
 	return decoded;

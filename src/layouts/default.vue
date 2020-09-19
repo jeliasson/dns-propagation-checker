@@ -1,32 +1,32 @@
 <template>
-    <div id="app">
-        <nuxt />
-    </div>
+	<div id="app">
+		<nuxt />
+	</div>
 </template>
 
 <script>
 import ProjectFooter from '~/components/Footer.vue';
 
 export default {
-    components: {
-        ProjectFooter,
-    },
-    data() {
-        return {};
-    },
-    methods: {
-        handleClick(e) {
-            console.log('click', e);
-        },
-        titleClick(e) {
-            console.log('titleClick', e);
-        },
-    },
-    watch: {
-        openKeys(val) {
-            console.log('openKeys', val);
-        },
-    },
+	components: {
+		ProjectFooter,
+	},
+	data() {
+		return {};
+	},
+	methods: {
+		handleClick(e) {
+			console.log('click', e);
+		},
+		titleClick(e) {
+			console.log('titleClick', e);
+		},
+	},
+	watch: {
+		openKeys(val) {
+			console.log('openKeys', val);
+		},
+	},
 };
 </script>
 
