@@ -1,5 +1,7 @@
 # DNS Propagation Checker
 
+> :warning: This repository has been discontinued. Feel free to take inspiration and build something better. <3
+
 [![Build Status on master](https://travis-ci.com/jeliasson/dns-propagation-checker.svg?branch=master)](https://travis-ci.com/jeliasson/dns-propagation-checker) [![Issues](https://img.shields.io/github/issues-raw/jeliasson/dns-propagation-checker)](https://github.com/jeliasson/dns-propagation-checker)
 
 DNS Propagation Checker is a web application that allows you to check multiple DNS records against one or many Name Servers (NS). This can be useful before changing Name Servers for a Internet Domain from one hosting to another, by validating that a DNS zone resolves correctly on all resolvers before proceeding with the migration.
