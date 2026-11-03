@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DNS Propagation Checker</title>
+    <meta
+      name="description"
+      content="Check DNS records against many name servers at once and see where they disagree."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // Inline so the stored theme is applied before the first paint.
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark" || saved === "light") {
+          document.documentElement.dataset.theme = saved;
+        }
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="masthead-top">
+        <h1>DNS Propagation Checker</h1>
+        <button type="button" id="theme" class="ghost" aria-live="polite">
+          Theme
+        </button>
+      </div>
+      <p>
+        Query records against many name servers at once and see where they
+        disagree, before you cut over a zone.
+      </p>
+    </header>
+
+    <main>
+      <div class="panels">
+        <section class="panel" aria-labelledby="servers-heading">
+          <div class="panel-head">
+            <h2 id="servers-heading">Name servers</h2>
+            <button type="button" class="ghost" data-add="server">
+              Add server
+            </button>
+          </div>
+          <ul class="rows" id="servers"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="records-heading">
+          <div class="panel-head">
+            <h2 id="records-heading">Records</h2>
+            <button type="button" class="ghost" data-add="record">
+              Add record
+            </button>
+          </div>
+          <ul class="rows" id="records"></ul>
+        </section>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="query" class="primary">Query</button>
+        <button type="button" id="share" class="ghost">Copy link</button>
+        <span id="status" class="status" role="status" aria-live="polite"></span>
+      </div>
+
+      <section id="results" class="results" aria-live="polite"></section>
+    </main>
+
+    <footer>
+      <span id="footer-summary"></span>
+      <a href="https://github.com/jeliasson/dns-propagation-checker"
+        >Source on GitHub</a
+      >
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

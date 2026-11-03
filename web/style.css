@@ -1,0 +1,390 @@
+:root {
+  color-scheme: light dark;
+
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --border: #e3e3ea;
+  --text: #16161d;
+  --muted: #6b6b7b;
+  --accent: #2f6df6;
+  --accent-text: #ffffff;
+  --ok-bg: #effaf3;
+  --ok-border: #a7e0bd;
+  --ok-text: #1a7f45;
+  --diff-bg: #fff6ed;
+  --diff-border: #f3c08a;
+  --diff-text: #a85608;
+  --err-text: #c2322b;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Dark palette. Applied by the OS preference unless the user has picked a
+   theme explicitly, in which case data-theme on <html> decides. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101014;
+    --surface: #18181d;
+    --border: #2c2c34;
+    --text: #ececf1;
+    --muted: #9a9aab;
+    --accent: #5b8dff;
+    --accent-text: #0b0b0f;
+    --ok-bg: #11241a;
+    --ok-border: #2b5e3e;
+    --ok-text: #6ad694;
+    --diff-bg: #2a1d10;
+    --diff-border: #6d4a1f;
+    --diff-text: #f0ae5e;
+    --err-text: #f2766e;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #101014;
+  --surface: #18181d;
+  --border: #2c2c34;
+  --text: #ececf1;
+  --muted: #9a9aab;
+  --accent: #5b8dff;
+  --accent-text: #0b0b0f;
+  --ok-bg: #11241a;
+  --ok-border: #2b5e3e;
+  --ok-text: #6ad694;
+  --diff-bg: #2a1d10;
+  --diff-border: #6d4a1f;
+  --diff-text: #f0ae5e;
+  --err-text: #f2766e;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1.25rem 3rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.masthead,
+main,
+footer {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.masthead-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.masthead h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+.masthead p {
+  margin: 0 0 2rem;
+  max-width: 60ch;
+  color: var(--muted);
+}
+
+/* Panels ------------------------------------------------------------- */
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.row input[type="checkbox"] {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.row.disabled input:not([type="checkbox"]),
+.row.disabled select {
+  opacity: 0.45;
+}
+
+/* Form controls ------------------------------------------------------ */
+
+input[type="text"],
+select {
+  min-width: 0;
+  padding: 0.45rem 0.55rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+input[type="text"]:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.row .name {
+  flex: 1 1 40%;
+}
+
+.row .value {
+  flex: 1 1 60%;
+  font-family: var(--mono);
+  font-size: 0.9em;
+}
+
+.row select {
+  flex: none;
+  width: 7.5rem;
+}
+
+input.invalid {
+  border-color: var(--err-text);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease;
+}
+
+button:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.primary {
+  padding: 0.5rem 1.6rem;
+  font-weight: 600;
+  color: var(--accent-text);
+  background: var(--accent);
+}
+
+.primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.ghost {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: transparent;
+  border-color: var(--border);
+}
+
+.ghost:hover {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+.remove {
+  flex: none;
+  width: 1.9rem;
+  height: 1.9rem;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  border-color: var(--border);
+}
+
+.remove:hover {
+  color: var(--err-text);
+  border-color: var(--err-text);
+}
+
+/* Actions ------------------------------------------------------------ */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.status {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.status.warn {
+  color: var(--diff-text);
+}
+
+.status.error {
+  color: var(--err-text);
+}
+
+/* Results ------------------------------------------------------------ */
+
+.results:empty {
+  display: none;
+}
+
+.results {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody th {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+tbody th .type {
+  margin-left: 0.4rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+td pre {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.85em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid;
+}
+
+.badge.ok {
+  color: var(--ok-text);
+  background: var(--ok-bg);
+  border-color: var(--ok-border);
+}
+
+.badge.diff {
+  color: var(--diff-text);
+  background: var(--diff-bg);
+  border-color: var(--diff-border);
+}
+
+tr.diff th,
+tr.diff td {
+  background: var(--diff-bg);
+}
+
+.meta {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.failed {
+  color: var(--err-text);
+}
+
+.empty {
+  color: var(--muted);
+}
+
+/* Footer ------------------------------------------------------------- */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+footer a {
+  color: inherit;
+}

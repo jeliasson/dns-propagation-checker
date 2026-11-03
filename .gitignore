@@ -1,0 +1,4 @@
+/dist/
+/dnspc
+*.test
+coverage.out

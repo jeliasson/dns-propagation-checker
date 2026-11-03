@@ -1,29 +1,49 @@
-FROM node:latest
-WORKDIR /app
+# syntax=docker/dockerfile:1
 
-# Copy file deps
-COPY src/api api
-COPY src/assets assets
-COPY src/components components
-COPY src/layouts layouts
-COPY src/pages pages
-COPY src/plugins plugins
-COPY src/static static
-COPY src/nuxt.config.js nuxt.config.js
-COPY src/package.json package.json
-COPY src/yarn.lock yarn.lock
+# ---- build ----------------------------------------------------------------
+# Pinned to BUILDPLATFORM so that multi-arch builds cross-compile natively
+# instead of running the whole toolchain under emulation.
+FROM --platform=$BUILDPLATFORM golang:1.26-alpine AS build
 
-# Install 'dig'
-RUN apt-get update && apt-get -y install dnsutils
+ENV CGO_ENABLED=0
 
-# Install yarn deps
-RUN yarn
+WORKDIR /src
 
-# Build Nuxt
-RUN npx nuxt build
+# Dependencies first, so editing the source does not invalidate the module
+# download layer.
+COPY go.mod go.sum ./
+RUN --mount=type=cache,target=/go/pkg/mod go mod download
 
-# Expose on port 3000
+COPY . .
+
+ARG VERSION=dev
+ARG TARGETOS
+ARG TARGETARCH
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH:-amd64} go build \
+      -trimpath \
+      -ldflags "-s -w -X github.com/jeliasson/dns-propagation-checker/internal/cli.Version=${VERSION}" \
+      -o /dnspc ./cmd/dnspc
+
+# ---- runtime --------------------------------------------------------------
+# scratch: the image holds one static binary and nothing else. The frontend is
+# embedded in the binary and DNS queries are made natively, so there is no
+# Node runtime, no dig, and no base distro to keep patched. Nothing here
+# speaks TLS, so not even a CA bundle is needed.
+FROM scratch AS runtime
+
+COPY --from=build /dnspc /dnspc
+
+# Unprivileged. scratch has no /etc/passwd, so the id has to be numeric.
+USER 65534:65534
+
 EXPOSE 3000
+ENV DNSPC_ADDR=:3000
 
-# Start nuxt
-ENTRYPOINT [ "npx", "nuxt", "start" ]
+# No shell in scratch, so the binary probes itself.
+HEALTHCHECK --interval=30s --timeout=3s --start-period=2s \
+    CMD ["/dnspc", "healthcheck"]
+
+ENTRYPOINT ["/dnspc"]
+CMD ["serve"]

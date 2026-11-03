@@ -1,10 +1,21 @@
-version: "3.4"
 services:
   dns-propagation-checker:
     container_name: dns-propagation-checker
-    hostname: dns-propagation-checker
     build:
-      dockerfile: Dockerfile
       context: .
+      args:
+        VERSION: local
+    image: dns-propagation-checker:latest
     ports:
-      - 3000:3000/tcp
+      - "3000:3000"
+    environment:
+      DNSPC_LOG_LEVEL: info
+      # Set when running behind a reverse proxy you control, so that rate
+      # limiting sees the real client IP instead of the proxy's.
+      # DNSPC_TRUST_PROXY: "1"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
